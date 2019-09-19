@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">XTranslation</string>
+    <string name="username_hint">Username</string>
+    <string name="log_in">Log In</string>
+    <string name="log_out">Log Out</string>
+    <string name="connect">Connect</string>
+    <string name="show_log">Show Log</string>
+    <string name="log_hint">Log Display</string>
 </resources>
