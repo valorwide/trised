@@ -7,5 +7,5 @@ import retrofit2.http.GET;
 
 public interface GetDataService {
     @GET("getresult")
-    Call<Void> getAllSurah();
+    Call<List<SurahModel>> getAllSurah();
 }
