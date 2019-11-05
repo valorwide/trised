@@ -29,6 +29,17 @@ public class SurahActivity extends AppCompatActivity {
 
         /*Create handle for the RetrofitInstance interface*/
         GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
+//        service.getAllSurah().enqueue(new Callback<Void>() {
+//            @Override
+//            public void onResponse(Call<Void> call, Response<Void> response) {
+//                Log.d("chkstring",""+response.body());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Void> call, Throwable t) {
+//
+//            }
+     //   });
         Call<List<SurahModel>> call = service.getAllSurah();
         call.enqueue(new Callback<List<SurahModel>>() {
             @Override
@@ -37,13 +48,14 @@ public class SurahActivity extends AppCompatActivity {
                 if(response.isSuccessful())
                 {
                     Log.d("datacheck", "response successful: "+response.body());
+                    generateDataList(response.body());
                 }
                 else
                 {
-                    Log.d("datacheck", "response error: "+response.code());
+                    Log.d(" ", "response error: "+response.code());
                 }
 
-                generateDataList(response.body());
+
             }
 
             @Override
