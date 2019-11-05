@@ -56,6 +56,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     private Button connectBtn;
     private Handler handler;
     private SurahFragment surahFragment;
+    private int i=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,13 +88,23 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         leftScroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(i>0)
+                {
+                    sendChat("31/"+i);
+                    i--;
+                }
+
 
             }
         });
         rightScroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(i<3)
+                {
+                    sendChat("31/"+i);
+                    i++;
+                }
             }
         });
         surahSecltionButton.setOnClickListener(new View.OnClickListener() {
@@ -185,13 +196,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 
     }
 
-    public void leftBtnClick(View view) {
 
-    }
-
-    public void rightBtnClick(View view) {
-
-    }
 
     public void sendClick(View view) {
         String msg=tf_chat.getText().toString().trim();
@@ -250,10 +255,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                                         final String str=string;
 
                                         ta_chat.setText(str + "\r\n"+ data[0] + ": " + data[1] + "\r\n");
-                                        if(data[0].contains("server"))
-                                        {
-                                            Toast.makeText(LogInActivity.this, ""+data[0] + ": " + data[1], Toast.LENGTH_SHORT).show();
-                                        }
+
                                     }
                                 });
 
@@ -276,13 +278,16 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                                 writeUsers();
                                 users.clear();
                             }
-                            else if (data[2].equals("res"))
+                            else if (data[2].equals("Res"))
                             {
                                 //usernametext.setText("");
                                 runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        responseMethod(data[1]);
+
+                                            Toast.makeText(LogInActivity.this, ""+data[0] + ": " + data[1], Toast.LENGTH_SHORT).show();
+
+                                        responseMethod(""+data[1]);
                                     }
                                 });
 
@@ -318,7 +323,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 
         } else {
             try {
-                writer.println(username + ":" + tf_chat.getText() + ":" + "Req");
+                writer.println(username + ":" + text + ":" + "Req");
                 writer.flush(); // flushes the buffer
             } catch (Exception ex) {
                 ta_chat.setText("Message was not sent. \n");

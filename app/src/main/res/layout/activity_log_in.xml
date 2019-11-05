@@ -87,14 +87,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:rotation="90"
-
+        android:padding="8dp"
         android:scaleType="fitXY"
-        android:onClick="leftBtnClick"
+
         android:src="@android:drawable/arrow_down_float"
         app:layout_constraintBottom_toBottomOf="@+id/changeView"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,13 +102,14 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
-
+        android:layout_marginEnd="8dp"
+        android:padding="8dp"
         android:rotation="270"
-        android:onClick="rightBtnClick"
+
         android:scaleType="fitXY"
         android:src="@android:drawable/arrow_down_float"
         app:layout_constraintBottom_toBottomOf="@+id/changeView"
