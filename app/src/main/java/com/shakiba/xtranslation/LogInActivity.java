@@ -251,6 +251,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 
 
                                         Log.d(TAG, "Check: "+data[0] + ": " + data[1] );
+                                        Toast.makeText(getBaseContext(),"Message:: "+data[1],Toast.LENGTH_SHORT).show();
                                         String string=ta_chat.getText().toString().trim();
                                         final String str=string;
 
@@ -267,6 +268,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                             {
                                 // ta_chat.setText("");
                                 userAdd(data[0]);
+
                             }
                             else if (data[2].equals(disconnect))
                             {

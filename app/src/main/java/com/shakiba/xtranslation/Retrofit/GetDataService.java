@@ -10,4 +10,7 @@ public interface GetDataService {
 
     @GET("getresult")
     Call<List<SurahModel>> getAllSurah();
+
+    @GET("getsurahdetails")
+    Call<List<SurahDetailsModel>> getSurahDetails();
 }
