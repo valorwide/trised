@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 <androidx.cardview.widget.CardView
-    android:id="@+id/surah_cardview"
+    android:id="@+id/surahlistcardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="4dp"

@@ -3,6 +3,7 @@ package com.shakiba.xtranslation;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -21,6 +22,9 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.shakiba.xtranslation.Retrofit.GetDataService;
+import com.shakiba.xtranslation.Retrofit.RetrofitClientInstance;
+import com.shakiba.xtranslation.Retrofit.SurahDetailsModel;
 import com.shakiba.xtranslation.surah.SurahFragment;
 import com.util.ShowAlertDialog;
 
@@ -34,6 +38,11 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.OnRadioButtonClick{
 
@@ -57,6 +66,15 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     private Handler handler;
     private SurahFragment surahFragment;
     private int i=1;
+    GetDataService service;
+    Call<List<SurahDetailsModel>> call;
+    private List<SurahDetailsModel> surahDetailsModelList;
+    private int surahId;
+    private int lan;
+    private TextView surahTitle;
+    private int selectPage;
+    private int role=1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +90,9 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         leftScroll=findViewById(R.id.imageView);
         rightScroll=findViewById(R.id.imageView2);
         surahSecltionButton=findViewById(R.id.btnSelection);
+        surahTitle=findViewById(R.id.surahNameText);
         surahFragment=new SurahFragment();
+        service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
         getSupportFragmentManager().beginTransaction().replace(R.id.changeView,surahFragment).commit();
         logSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -88,10 +108,25 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         leftScroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(i>0)
+//                if(i>0)
+//                {
+//                    sendChat("31/"+i);
+//                    i--;
+//                }
+                if(selectPage>0)
                 {
-                    sendChat("31/"+i);
-                    i--;
+                    String msg="";
+                    if(lan==1)
+                    {
+                        msg=surahDetailsModelList.get(--selectPage).getArabicText();
+
+                    }
+                    else {
+                        msg=surahDetailsModelList.get(--selectPage).getBanglaText();
+
+                    }
+                    surahFragment.setSurahText(msg);
+                    sendMsgToServer(msg,""+selectPage);
                 }
 
 
@@ -100,10 +135,23 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         rightScroll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(i<3)
+//                if(i<3)
+//                {
+//                    sendChat("31/"+i);
+//                    i++;
+//                }
+                if(selectPage<surahDetailsModelList.size()-1)
                 {
-                    sendChat("31/"+i);
-                    i++;
+                    String msg="";
+                    if(lan==1)
+                    {
+                        msg=surahDetailsModelList.get(++selectPage).getArabicText();
+                    }
+                    else {
+                        msg=surahDetailsModelList.get(++selectPage).getBanglaText();
+                    }
+                    surahFragment.setSurahText(msg);
+                    sendMsgToServer(msg,""+selectPage);
                 }
             }
         });
@@ -111,9 +159,71 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(LogInActivity.this,SurahActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent,111);
             }
         });
+
+    }
+    private void getSurahDetailsById(String id)
+    {
+        call = service.getSurahDetails(id);
+        call.enqueue(new Callback<List<SurahDetailsModel>>() {
+            @Override
+            public void onResponse(Call<List<SurahDetailsModel>> call, Response<List<SurahDetailsModel>> response) {
+                // progressDoalog.dismiss();
+                if(response.isSuccessful())
+                {
+                    Log.d("datacheck", "response successful: "+response.body());
+                    generateDataList(response.body());
+                }
+                else
+                {
+                    Log.d("datacheck", "response error: "+response.code());
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<List<SurahDetailsModel>> call, Throwable t) {
+                // progressDoalog.dismiss();
+                Log.d("datacheck", "response error: "+t.getMessage());
+                Toast.makeText(LogInActivity.this, "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void sendMsgToServer(String msg,String page)
+    {
+
+      service.sendMessageForOthers(msg, page).enqueue(new Callback<com.shakiba.xtranslation.Retrofit.Response>() {
+          @Override
+          public void onResponse(Call<com.shakiba.xtranslation.Retrofit.Response> call, Response<com.shakiba.xtranslation.Retrofit.Response> response) {
+                if(response.isSuccessful())
+                {
+                    Log.d("datacheck","success:"+response.body());
+                }
+                else {
+                    Log.d("datacheck","error"+response.code());
+                }
+          }
+
+          @Override
+          public void onFailure(Call<com.shakiba.xtranslation.Retrofit.Response> call, Throwable t) {
+              Log.d("datacheck","error:"+t.getMessage());
+          }
+      });
+    }
+
+    private void generateDataList(List<SurahDetailsModel> surahDetailsModelList) {
+        this.surahDetailsModelList=surahDetailsModelList;
+
+        if(lan==1) {
+            surahFragment.setSurahText(surahDetailsModelList.get(0).getArabicText());
+        }
+        else {
+            surahFragment.setSurahText(surahDetailsModelList.get(0).getBanglaText());
+        }
 
     }
     //--------------------------//
@@ -218,7 +328,14 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode==111)
         {
-
+           if(resultCode== Activity.RESULT_OK)
+           {
+               Log.d("datacheck",""+data.getIntExtra("id",0));
+               Log.d("datacheck",""+data.getIntExtra("lan",0));
+               surahId=data.getIntExtra("id",0);
+               lan=data.getIntExtra("lan",0);
+               getSurahDetailsById(""+surahId);
+           }
         }
     }
 
@@ -251,6 +368,13 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 
 
                                         Log.d(TAG, "Check: "+data[0] + ": " + data[1] );
+
+                                        if(role==2){
+                                            surahFragment.setSurahText(data[1]);
+                                        }
+                                        else {
+                                            //Toast.makeText(getBaseContext(),"Message:: "+data[1],Toast.LENGTH_SHORT).show();
+                                        }
                                         String string=ta_chat.getText().toString().trim();
                                         final String str=string;
 
@@ -267,6 +391,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                             {
                                 // ta_chat.setText("");
                                 userAdd(data[0]);
+
                             }
                             else if (data[2].equals(disconnect))
                             {
