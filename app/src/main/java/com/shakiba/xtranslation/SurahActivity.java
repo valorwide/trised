@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -18,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SurahActivity extends AppCompatActivity {
+public class SurahActivity extends AppCompatActivity implements SurahAdapter.OnClickAdapterItem {
     private SurahAdapter adapter;
     private RecyclerView recyclerView;
 
@@ -70,10 +72,19 @@ public class SurahActivity extends AppCompatActivity {
     /*Method to generate List of data using RecyclerView with custom adapter*/
     private void generateDataList(List<SurahModel> surahModelList) {
         recyclerView = findViewById(R.id.recycleview_surah);
-        adapter = new SurahAdapter(surahModelList,this);
+        adapter = new SurahAdapter(surahModelList,this,this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(SurahActivity.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void onClickItem(int id,int lan) {
+        Intent intent=new Intent();
+        intent.putExtra("id",id);
+        intent.putExtra("lan",lan);
+        setResult(Activity.RESULT_OK,intent);
+        finish();
+
+    }
 }

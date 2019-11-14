@@ -25,36 +25,40 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.CustomViewHo
     private List<SurahModel> dataList;
     private Context context;
     private ShowRadioDialog showRadioDialog;
-    private boolean flag=true;
+    private boolean flag = true;
+    public OnClickAdapterItem onClickAdapterItem;
 
-    public SurahAdapter(List<SurahModel> dataList, Context context) {
+    public SurahAdapter(List<SurahModel> dataList, Context context, OnClickAdapterItem onClickAdapterItem) {
         this.dataList = dataList;
         this.context = context;
-        showRadioDialog= new ShowRadioDialog(context);
+        showRadioDialog = new ShowRadioDialog(context);
         showRadioDialog.setOnRadioButtonClick(this);
+        this.onClickAdapterItem = onClickAdapterItem;
+
     }
 
     @NonNull
     @Override
     public SurahAdapter.CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater=LayoutInflater.from(context);
-        View view=inflater.inflate(R.layout.item_parent_surah,parent,false);
-        SurahAdapter.CustomViewHolder holder=new SurahAdapter.CustomViewHolder(view);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        View view = inflater.inflate(R.layout.item_parent_surah, parent, false);
+        SurahAdapter.CustomViewHolder holder = new SurahAdapter.CustomViewHolder(view);
 
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final SurahAdapter.CustomViewHolder holder, int position) {
-        final SurahModel surahModel=(SurahModel) dataList.get(position);
+    public void onBindViewHolder(@NonNull final SurahAdapter.CustomViewHolder holder, final int position) {
+        final SurahModel surahModel = dataList.get(position);
         holder.textView1.setText(Html.fromHtml(surahModel.getTitle()));
         holder.textView2.setText(surahModel.getTitleBang());
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showRadioDialog.setSurahId(dataList.get(position).getId());
                 showRadioDialog.show();
-                if(flag==true)
-                {
+                if (flag == true) {
 //                    SurahFragment fragmentB=new SurahFragment();
 //                    Bundle bundle=new Bundle();
 //                    bundle.putInt("id",surahModel.getId());
@@ -66,6 +70,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.CustomViewHo
             }
         });
     }
+
     @Override
     public int getItemViewType(int position) {
         return position;
@@ -77,29 +82,27 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.CustomViewHo
     }
 
     @Override
-    public void onButtonClick(int buttonValue) {
-        if(buttonValue==0)
-        {
-            flag=false;
-            Log.d("flag: ", "value: "+flag);
-        }
-        else{
-            flag=true;
-            Log.d("flag: ", "value: "+flag);
-        }
+    public void onButtonClick(int id,int lan) {
+
+
+        onClickAdapterItem.onClickItem(13,lan);
 
     }
 
-    static class CustomViewHolder extends RecyclerView.ViewHolder{
-        TextView textView1,textView2;
+    static class CustomViewHolder extends RecyclerView.ViewHolder {
+        TextView textView1, textView2;
         CardView cardView;
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView1=itemView.findViewById(R.id.arabic_title);
-            textView2=itemView.findViewById(R.id.bangla_title);
-            cardView=itemView.findViewById(R.id.surahlistcardview);
+            textView1 = itemView.findViewById(R.id.arabic_title);
+            textView2 = itemView.findViewById(R.id.bangla_title);
+            cardView = itemView.findViewById(R.id.surahlistcardview);
         }
 
     }
 
+    public interface OnClickAdapterItem {
+        public void onClickItem(int id,int value);
+    }
 }

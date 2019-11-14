@@ -40,35 +40,13 @@ public class SurahFragment extends BaseFragment {
         progressBar=view.findViewById(R.id.progressBar);
         //int surah_id=getArguments().getInt("id");
         // surah details
-        GetDataService service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-        Call<List<SurahDetailsModel>> call = service.getSurahDetails();
-        call.enqueue(new Callback<List<SurahDetailsModel>>() {
-            @Override
-            public void onResponse(Call<List<SurahDetailsModel>> call, Response<List<SurahDetailsModel>> response) {
-                // progressDoalog.dismiss();
-                if(response.isSuccessful())
-                {
-                    Log.d("datacheck", "response successful: "+response.body());
-                    generateDataList(response.body());
-                }
-                else
-                {
-                    Log.d(" ", "response error: "+response.code());
-                }
 
 
-            }
-
-            @Override
-            public void onFailure(Call<List<SurahDetailsModel>> call, Throwable t) {
-                // progressDoalog.dismiss();
-                Log.d("datacheck", "response error: "+t.getMessage());
-                Toast.makeText(getActivity(), "Something went wrong...Please try later!", Toast.LENGTH_SHORT).show();
-            }
-        });
 
         return view;
     }
+
+
 
     @Override
     public void setSurahText(String text) {
@@ -90,7 +68,5 @@ public class SurahFragment extends BaseFragment {
         progressBar.setVisibility(View.GONE);
         textView.setVisibility(View.VISIBLE);
     }
-    public void generateDataList(List<SurahDetailsModel> surahModelList)
-    {
-    }
+
 }

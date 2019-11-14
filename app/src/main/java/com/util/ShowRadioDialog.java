@@ -19,12 +19,21 @@ public class ShowRadioDialog {
     private RadioButton publicRadioButton,privateRadioButton;
     private Button buttonOk,buttonCancel;
     private OnRadioButtonClick onRadioButtonClick;
+    private int surahId;
     int buttonvalue=0;
     public ShowRadioDialog(@NonNull Context context) {
         this.context=context;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             buildDialog(context);
         }
+    }
+
+    public int getSurahId() {
+        return surahId;
+    }
+
+    public void setSurahId(int surahId) {
+        this.surahId = surahId;
     }
 
     public void setOnRadioButtonClick(OnRadioButtonClick onRadioButtonClick) {
@@ -61,7 +70,7 @@ public class ShowRadioDialog {
             public void onClick(View v) {
                 if (onRadioButtonClick!=null)
                 {
-                    onRadioButtonClick.onButtonClick(buttonvalue);
+                    onRadioButtonClick.onButtonClick(getSurahId(),buttonvalue);
                     dialog.dismiss();
                 }
 
@@ -84,7 +93,7 @@ public class ShowRadioDialog {
     }
     public interface OnRadioButtonClick
     {
-        public void onButtonClick(int buttonValue);
+        public void onButtonClick(int id,int lan);
     }
 
 }
