@@ -47,6 +47,7 @@ public class SurahActivity extends AppCompatActivity {
                // progressDoalog.dismiss();
                 if(response.isSuccessful())
                 {
+
                     Log.d("datacheck", "response successful: "+response.body());
                     generateDataList(response.body());
                 }
