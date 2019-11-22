@@ -73,7 +73,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     private int lan;
     private TextView surahTitle;
     private int selectPage;
-    private int role=1;
+    private int role=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -344,8 +344,6 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         @Override
         public void run()
         {
-
-
             try
             {
                 while ((stream = reader.readLine()) != null)
@@ -373,7 +371,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                                             surahFragment.setSurahText(data[1]);
                                         }
                                         else {
-                                            //Toast.makeText(getBaseContext(),"Message:: "+data[1],Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getBaseContext(),"Message:: "+data[1],Toast.LENGTH_SHORT).show();
                                         }
                                         String string=ta_chat.getText().toString().trim();
                                         final String str=string;
@@ -666,3 +664,4 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 
 
 }
+

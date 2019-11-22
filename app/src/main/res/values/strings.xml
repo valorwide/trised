@@ -6,4 +6,8 @@
     <string name="connect">Connect</string>
     <string name="show_log">Show Log</string>
     <string name="log_hint">Log Display</string>
+    <string name="x_translation">X Translation</string>
+    <string name="username_login">Username</string>
+    <string name="password_login">Password</string>
+    <string name="logintext">Log In</string>
 </resources>
