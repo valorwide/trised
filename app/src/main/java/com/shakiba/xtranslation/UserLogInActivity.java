@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class UserLogInActivity extends AppCompatActivity {
-
+    private int mood=2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -15,6 +15,16 @@ public class UserLogInActivity extends AppCompatActivity {
     }
 
     public void ConnecttoServer(View view) {
-        startActivity(new Intent(this,SurahActivity.class));
+        if(mood==1){
+            startActivity(new Intent(this,SurahActivity.class));
+        }
+        else {
+            Intent intent=new Intent(UserLogInActivity.this,LogInActivity.class);
+            intent.putExtra("mood",mood);
+            finish();
+            startActivity(intent);
+        }
+
+        finish();
     }
 }

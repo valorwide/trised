@@ -93,6 +93,14 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         surahTitle=findViewById(R.id.surahNameText);
         surahFragment=new SurahFragment();
         service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
+
+        role=getIntent().getIntExtra("mood",1);
+        //2 other user
+        //1 master
+        if(role==1)
+        {
+            setupFirstUser();
+        }
         getSupportFragmentManager().beginTransaction().replace(R.id.changeView,surahFragment).commit();
         logSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -113,20 +121,31 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 //                    sendChat("31/"+i);
 //                    i--;
 //                }
-                if(selectPage>0)
+                if(selectPage>=surahDetailsModelList.size())
+                {
+                    selectPage=surahDetailsModelList.size()-1;
+                }
+                if(selectPage>=0)
                 {
                     String msg="";
+                    String sendmsg="";
                     if(lan==1)
                     {
-                        msg=surahDetailsModelList.get(--selectPage).getArabicText();
+
+                        msg=surahDetailsModelList.get(selectPage).getArabicText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getBanglaText();
+
 
                     }
                     else {
-                        msg=surahDetailsModelList.get(--selectPage).getBanglaText();
+                        msg=surahDetailsModelList.get(selectPage).getBanglaText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getArabicText();
 
                     }
+
                     surahFragment.setSurahText(msg);
-                    sendMsgToServer(msg,""+selectPage);
+                    sendMsgToServer(sendmsg,""+selectPage);
+                    selectPage--;
                 }
 
 
@@ -140,18 +159,27 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 //                    sendChat("31/"+i);
 //                    i++;
 //                }
-                if(selectPage<surahDetailsModelList.size()-1)
+                if(selectPage<0)
+                {
+                    selectPage=0;
+                }
+                if(selectPage<surahDetailsModelList.size())
                 {
                     String msg="";
+                    String sendmsg="";
                     if(lan==1)
                     {
-                        msg=surahDetailsModelList.get(++selectPage).getArabicText();
+                        msg=surahDetailsModelList.get(selectPage).getArabicText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getBanglaText();
                     }
                     else {
-                        msg=surahDetailsModelList.get(++selectPage).getBanglaText();
+                        msg=surahDetailsModelList.get(selectPage).getBanglaText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getArabicText();
                     }
+
                     surahFragment.setSurahText(msg);
-                    sendMsgToServer(msg,""+selectPage);
+                    sendMsgToServer(sendmsg,""+selectPage);
+                    selectPage++;
                 }
             }
         });
@@ -162,6 +190,11 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                 startActivityForResult(intent,111);
             }
         });
+        if(role==1){
+            surahId=getIntent().getIntExtra("id",0);
+            lan=getIntent().getIntExtra("lan",0);
+            getSurahDetailsById(""+surahId);
+        }
 
     }
     private void getSurahDetailsById(String id)
@@ -323,21 +356,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==111)
-        {
-           if(resultCode== Activity.RESULT_OK)
-           {
-               Log.d("datacheck",""+data.getIntExtra("id",0));
-               Log.d("datacheck",""+data.getIntExtra("lan",0));
-               surahId=data.getIntExtra("id",0);
-               lan=data.getIntExtra("lan",0);
-               getSurahDetailsById(""+surahId);
-           }
-        }
-    }
+
 
     public class IncomingReader implements Runnable
     {

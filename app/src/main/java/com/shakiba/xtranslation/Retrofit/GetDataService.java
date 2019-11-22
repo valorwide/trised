@@ -17,7 +17,7 @@ public interface GetDataService {
 
     @GET("getsurahdetails")
     Call<List<SurahDetailsModel>> getSurahDetails(@Query("id") String id);
-@FormUrlEncoded
-    @POST("next_page")
-    Call<Response> sendMessageForOthers(@Field("msg") String msg,@Field("page") String page);
+
+    @GET("next_page")
+    Call<Response> sendMessageForOthers(@Query("msg") String msg,@Query("page") String page);
 }

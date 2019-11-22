@@ -81,11 +81,11 @@ public class SurahActivity extends AppCompatActivity implements SurahAdapter.OnC
 
     @Override
     public void onClickItem(int id,int lan) {
-        Intent intent=new Intent();
+        Intent intent=new Intent(SurahActivity.this,LogInActivity.class);
         intent.putExtra("id",id);
         intent.putExtra("lan",lan);
-        setResult(Activity.RESULT_OK,intent);
-        finish();
 
+        finish();
+        startActivity(intent);
     }
 }

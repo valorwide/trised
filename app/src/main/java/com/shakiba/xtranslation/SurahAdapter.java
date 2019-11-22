@@ -63,7 +63,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.CustomViewHo
 //                    Bundle bundle=new Bundle();
 //                    bundle.putInt("id",surahModel.getId());
 //                    fragmentB.setArguments(bundle);
-                    //context.startActivity(new Intent(context, LogInActivity.class));
+//                    context.startActivity(new Intent(context, LogInActivity.class));
 
                 }
 
