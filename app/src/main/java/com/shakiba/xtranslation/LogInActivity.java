@@ -113,20 +113,31 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 //                    sendChat("31/"+i);
 //                    i--;
 //                }
-                if(selectPage>0)
+                if(selectPage>=surahDetailsModelList.size())
+                {
+                    selectPage=surahDetailsModelList.size()-1;
+                }
+                if(selectPage>=0)
                 {
                     String msg="";
+                    String sendmsg="";
                     if(lan==1)
                     {
-                        msg=surahDetailsModelList.get(--selectPage).getArabicText();
+
+                        msg=surahDetailsModelList.get(selectPage).getArabicText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getBanglaText();
+
 
                     }
                     else {
-                        msg=surahDetailsModelList.get(--selectPage).getBanglaText();
+                        msg=surahDetailsModelList.get(selectPage).getBanglaText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getArabicText();
 
                     }
+
                     surahFragment.setSurahText(msg);
-                    sendMsgToServer(msg,""+selectPage);
+                    sendMsgToServer(sendmsg,""+selectPage);
+                    selectPage--;
                 }
 
 
@@ -140,18 +151,27 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 //                    sendChat("31/"+i);
 //                    i++;
 //                }
-                if(selectPage<surahDetailsModelList.size()-1)
+                if(selectPage<0)
+                {
+                    selectPage=0;
+                }
+                if(selectPage<surahDetailsModelList.size())
                 {
                     String msg="";
+                    String sendmsg="";
                     if(lan==1)
                     {
-                        msg=surahDetailsModelList.get(++selectPage).getArabicText();
+                        msg=surahDetailsModelList.get(selectPage).getArabicText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getBanglaText();
                     }
                     else {
-                        msg=surahDetailsModelList.get(++selectPage).getBanglaText();
+                        msg=surahDetailsModelList.get(selectPage).getBanglaText();
+                        sendmsg=surahDetailsModelList.get(selectPage).getArabicText();
                     }
+
                     surahFragment.setSurahText(msg);
-                    sendMsgToServer(msg,""+selectPage);
+                    sendMsgToServer(sendmsg,""+selectPage);
+                    selectPage++;
                 }
             }
         });

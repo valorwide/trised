@@ -85,7 +85,7 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.CustomViewHo
     public void onButtonClick(int id,int lan) {
 
 
-        onClickAdapterItem.onClickItem(13,lan);
+        onClickAdapterItem.onClickItem(id,lan);
 
     }
 
