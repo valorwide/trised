@@ -22,6 +22,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.shakiba.xtranslation.Retrofit.GetDataService;
 import com.shakiba.xtranslation.Retrofit.RetrofitClientInstance;
 import com.shakiba.xtranslation.Retrofit.SurahDetailsModel;
@@ -74,7 +75,10 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     private TextView surahTitle;
     private int selectPage;
     private int role=2;
-
+    private int pagecounter=0;
+    private TextView selectpageno;
+    private Button plusButton;
+    private Button minusButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +95,9 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         rightScroll=findViewById(R.id.imageView2);
         surahSecltionButton=findViewById(R.id.btnSelection);
         surahTitle=findViewById(R.id.surahNameText);
+        selectpageno=findViewById(R.id.pagetxt);
+        plusButton=findViewById(R.id.plusbtn);
+        minusButton=findViewById(R.id.minusbtn);
         surahFragment=new SurahFragment();
         service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
 
@@ -100,6 +107,9 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         if(role==1)
         {
             setupFirstUser();
+        }
+        else {
+            setupSecondUser();
         }
         getSupportFragmentManager().beginTransaction().replace(R.id.changeView,surahFragment).commit();
         logSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -143,9 +153,10 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
 
                     }
 
-                    surahFragment.setSurahText(msg);
-                    sendMsgToServer(sendmsg,""+selectPage);
-                    selectPage--;
+//                    surahFragment.setSurahText(msg);
+//                    sendMsgToServer(sendmsg,""+selectPage);
+//                    selectPage--;
+                    prepareleftscrollmsg(surahDetailsModelList,lan);
                 }
 
 
@@ -177,9 +188,10 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                         sendmsg=surahDetailsModelList.get(selectPage).getArabicText();
                     }
 
-                    surahFragment.setSurahText(msg);
-                    sendMsgToServer(sendmsg,""+selectPage);
-                    selectPage++;
+                    //surahFragment.setSurahText(msg);
+                    //sendMsgToServer(sendmsg,""+selectPage);
+                    //selectPage++;
+                    prepareMsgAndSend(surahDetailsModelList,lan);
                 }
             }
         });
@@ -194,7 +206,108 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
             surahId=getIntent().getIntExtra("id",0);
             lan=getIntent().getIntExtra("lan",0);
             getSurahDetailsById(""+surahId);
+
         }
+
+    }//rigth scroll
+    private void prepareMsgAndSend(List<SurahDetailsModel> surahDetailsModels,int lan){
+        if(isRightScrol=false)
+        {
+            selectPage++;
+        }
+        isRightScrol=true;
+        List<String> strings=new ArrayList<>();
+        List<String> stringsResponse=new ArrayList<>();
+       int count=0;
+        for(int i=count;i<Integer.parseInt(selectpageno.getText().toString().trim());i++){
+
+            if(i>=surahDetailsModels.size())
+            {
+                break;
+            }
+            else {
+                if (lan == 1) {
+                    strings.add(surahDetailsModels.get(selectPage).getArabicText() + "\n");
+                    stringsResponse.add(surahDetailsModels.get(selectPage).getBanglaText() + "\n");
+                } else {
+                    strings.add(surahDetailsModels.get(selectPage).getBanglaText() + "\n");
+                    stringsResponse.add(surahDetailsModels.get(selectPage).getArabicText() + "\n");
+                }
+
+                    selectPage++;
+
+
+            }
+//            selectPage++;
+        }
+        StringBuffer sb=new StringBuffer();
+        for(String st:strings){
+            sb.append(st);
+        }
+        surahFragment.setSurahText(""+sb);
+        sb=new StringBuffer();
+        for(String st:stringsResponse){
+            sb.append(st);
+        }
+
+
+        Gson gson=new Gson();
+
+        sendMsgToServer(""+gson.toJson(sb),""+selectPage);
+    }
+    boolean isRightScrol=true;
+
+    //left scroll
+    private void prepareleftscrollmsg(List<SurahDetailsModel> surahDetailsModels,int lan)
+    {
+
+        if(isRightScrol)
+        {
+            selectPage=selectPage-1;
+            isRightScrol=false;
+        }
+        List<String> strings=new ArrayList<>();
+        List<String> stringsResponse=new ArrayList<>();
+        int count=0;
+        for(int i=count;i<Integer.parseInt(selectpageno.getText().toString().trim());i++){
+
+            if(i>=surahDetailsModels.size())
+            {
+                break;
+            }
+            else {
+                if (lan == 1) {
+                    strings.add(surahDetailsModels.get(selectPage).getArabicText() + "\n");
+                    stringsResponse.add(surahDetailsModels.get(selectPage).getBanglaText() + "\n");
+                } else {
+                    strings.add(surahDetailsModels.get(selectPage).getBanglaText() + "\n");
+                    stringsResponse.add(surahDetailsModels.get(selectPage).getArabicText() + "\n");
+                }
+
+                    selectPage--;
+
+            }
+//            selectPage++;
+        }
+        StringBuffer sb=new StringBuffer();
+//        for(String st:strings){
+//            sb.append(st);
+//        }
+        for(int i=strings.size()-1;i>=0;i--)
+        {
+            sb.append(strings.get(i));
+        }
+        surahFragment.setSurahText(""+sb);
+        sb=new StringBuffer();
+        for(int i=stringsResponse.size()-1;i>=0;i--)
+        {
+            sb.append(stringsResponse.get(i));
+        }
+
+
+        Gson gson=new Gson();
+
+        sendMsgToServer(""+gson.toJson(sb),""+selectPage);
 
     }
     private void getSurahDetailsById(String id)
@@ -354,8 +467,60 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     String[] data;
     String stream, done = "Done", connect = "Connect", disconnect = "Disconnect", chat = "Chat";
 
+    public void PlusPage(View view) {
+        pagecounter++;
+        if(pagecounter>=0)
+        {
+            selectpageno.setText(""+pagecounter);
+            int sel=selectPage;
+            StringBuffer stringBuffer=new StringBuffer();
+            for(int i=0;i<pagecounter;i++)
+            {
+                if(lan==1)
+                {
+                    stringBuffer.append(surahDetailsModelList.get(sel).getArabicText()+"\n");
+                }
+                else {
+                    stringBuffer.append(surahDetailsModelList.get(sel).getBanglaText()+"\n");
+                }
+                sel++;
+            }
+            surahFragment.setSurahText(""+stringBuffer);
+        }
 
+    }
 
+    public void MinusPage(View view) {
+        pagecounter--;
+        if(pagecounter>=0)
+        {
+            selectpageno.setText(""+pagecounter);
+            StringBuffer stringBuffer=new StringBuffer();
+            List<String> strings=new ArrayList<>();
+            int sel=pagecounter-1;
+
+             // sel=sel-pagecounter;
+            for(int i=0;i<pagecounter;i++)
+            {
+                if(lan==1)
+                {
+                    strings.add(surahDetailsModelList.get(sel).getArabicText()+"\n");
+                   // stringBuffer.append();
+                }
+                else {
+                    strings.add(surahDetailsModelList.get(sel).getBanglaText()+"\n");
+                    //stringBuffer.append();
+                }
+                sel--;
+            }
+            for(int i=strings.size()-1;i>=0;i--)
+            {
+                stringBuffer.append(strings.get(i));
+            }
+            surahFragment.setSurahText(""+stringBuffer);
+        }
+
+    }
 
 
     public class IncomingReader implements Runnable
@@ -387,7 +552,15 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                                         Log.d(TAG, "Check: "+data[0] + ": " + data[1] );
 
                                         if(role==2){
-                                            surahFragment.setSurahText(data[1]);
+                                            try {
+                                                Gson gson=new Gson();
+                                                String str=gson.fromJson(data[1],String.class);
+                                                surahFragment.setSurahText(str);
+                                            }catch (Exception e)
+                                            {
+                                                Log.d("chk","Exception recieve:"+e.getMessage());
+                                            }
+
                                         }
                                         else {
                                             Toast.makeText(getBaseContext(),"Message:: "+data[1],Toast.LENGTH_SHORT).show();
@@ -457,6 +630,17 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         leftScroll.setVisibility(View.VISIBLE);
         rightScroll.setVisibility(View.VISIBLE);
         surahSecltionButton.setVisibility(View.VISIBLE);
+    }
+    public void setupSecondUser()
+    {
+        leftScroll.setVisibility(View.GONE);
+        rightScroll.setVisibility(View.GONE);
+        surahSecltionButton.setVisibility(View.INVISIBLE);
+        plusButton.setVisibility(View.INVISIBLE);
+        minusButton.setVisibility(View.INVISIBLE);
+        selectpageno.setVisibility(View.INVISIBLE);
+        logSwitch.setVisibility(View.VISIBLE);
+
     }
     public void sendChat(String text){
         String nothing = "";

@@ -27,8 +27,35 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:text="@string/show_log"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/connect_button" />
+    <TextView
+        android:id="@+id/pagetxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="@string/hint_1"
+        app:layout_constraintTop_toTopOf="@+id/connect_button"
+        app:layout_constraintEnd_toStartOf="@id/minusbtn"
+        app:layout_constraintStart_toEndOf="@id/plusbtn"/>
+    <Button
+        android:id="@+id/plusbtn"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:onClick="PlusPage"
+        app:layout_constraintStart_toEndOf="@+id/connect_button"
+        app:layout_constraintEnd_toStartOf="@+id/pagetxt"
+        app:layout_constraintTop_toTopOf="@+id/connect_button"/>
+    <Button
+        android:id="@+id/minusbtn"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:text="-"
+        android:onClick="MinusPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/connect_button"/>
 
     <TextView
         android:id="@+id/logText"
@@ -53,6 +80,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="Select Surah"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,14 +88,13 @@
         android:id="@+id/changeView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="32dp"
-
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surahNameText" />
 
     <TextView
@@ -86,13 +113,14 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:rotation="90"
         android:padding="32dp"
         android:scaleType="fitXY"
+        android:elevation="4dp"
         android:src="@android:drawable/arrow_down_float"
         app:layout_constraintBottom_toBottomOf="@+id/changeView"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,15 +128,15 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:padding="32dp"
         android:rotation="270"
         android:scaleType="fitXY"
-
+        android:elevation="4dp"
         android:src="@android:drawable/arrow_down_float"
         app:layout_constraintBottom_toBottomOf="@+id/changeView"
         app:layout_constraintEnd_toEndOf="parent"
