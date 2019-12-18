@@ -67,7 +67,7 @@
                 android:padding="10dp"
                 android:textSize="24dp"
                 android:textColor="@color/white"
-                android:hint="@string/logintext"
+
                 android:background="@drawable/button_delivery_shape"
                 app:layout_constraintTop_toBottomOf="@+id/password"
                 app:layout_constraintLeft_toLeftOf="parent"

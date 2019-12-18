@@ -20,4 +20,7 @@ public interface GetDataService {
 
     @GET("next_page")
     Call<Response> sendMessageForOthers(@Query("msg") String msg,@Query("page") String page);
+
+    @GET("userauth")
+    Call<UserLogin> userAUth();
 }

@@ -79,6 +79,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     private TextView selectpageno;
     private Button plusButton;
     private Button minusButton;
+    private Button connectbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +99,9 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         selectpageno=findViewById(R.id.pagetxt);
         plusButton=findViewById(R.id.plusbtn);
         minusButton=findViewById(R.id.minusbtn);
+        connectbutton=findViewById(R.id.connect_button);
         surahFragment=new SurahFragment();
+
         service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
 
         role=getIntent().getIntExtra("mood",1);
@@ -199,7 +202,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(LogInActivity.this,SurahActivity.class);
-                startActivityForResult(intent,111);
+                startActivity(intent);
             }
         });
         if(role==1){
@@ -210,6 +213,32 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         }
 
     }//rigth scroll
+    private void prepareMsgAndSendFirst(List<SurahDetailsModel> surahDetailsModels,int lan){
+
+        List<String> strings=new ArrayList<>();
+        List<String> stringsResponse=new ArrayList<>();
+        if (lan == 1) {
+            strings.add(surahDetailsModels.get(0).getArabicText() + "\n");
+            stringsResponse.add(surahDetailsModels.get(0).getBanglaText() + "\n");
+        } else {
+            strings.add(surahDetailsModels.get(0).getBanglaText() + "\n");
+            stringsResponse.add(surahDetailsModels.get(0).getArabicText() + "\n");
+        }
+        StringBuffer sb=new StringBuffer();
+        for(String st:strings){
+            sb.append(st);
+        }
+        surahFragment.setSurahText(""+sb);
+        sb=new StringBuffer();
+        for(String st:stringsResponse){
+            sb.append(st);
+        }
+
+
+        Gson gson=new Gson();
+
+        sendMsgToServer(""+gson.toJson(sb),""+selectPage);
+    }
     private void prepareMsgAndSend(List<SurahDetailsModel> surahDetailsModels,int lan){
         if(isRightScrol=false)
         {
@@ -321,6 +350,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
                 {
                     Log.d("datacheck", "response successful: "+response.body());
                     generateDataList(response.body());
+                    prepareMsgAndSendFirst(surahDetailsModelList,lan);
                 }
                 else
                 {
@@ -630,6 +660,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         leftScroll.setVisibility(View.VISIBLE);
         rightScroll.setVisibility(View.VISIBLE);
         surahSecltionButton.setVisibility(View.VISIBLE);
+        connectbutton.setVisibility(View.INVISIBLE);
     }
     public void setupSecondUser()
     {
