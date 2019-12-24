@@ -2,7 +2,8 @@
 <resources>
     <color name="colorPrimary">#4CAF50</color>
     <color name="colorPrimaryDark">#4CAF50</color>
-    <color name="colorAccent">#4CAF50</color>
+    <color name="colorAccent">#4CAF20</color>
+    <color name="greentransparent">#6ab86e</color>
     <color name="black">#000</color>
     <color name="white">#fff</color>
     <color name="gold">#FFD700</color>

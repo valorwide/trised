@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/white"
+    android:background="@color/greentransparent"
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Language :"
+        android:backgroundTint="@color/black"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         android:textSize="24sp"
@@ -55,7 +56,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="OK"
-
+        android:textAllCaps="false"
+        android:background="@drawable/button_shape"
         android:textSize="18sp"/>
     <Button
         android:id="@+id/cancel"
@@ -64,6 +66,8 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="20dp"
         android:textSize="18sp"
+        android:textAllCaps="false"
+        android:background="@drawable/button_shape"
         app:layout_constraintTop_toBottomOf="@+id/radio_group"
         app:layout_constraintLeft_toRightOf="@id/ok"
         android:text="Cancel"/>

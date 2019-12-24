@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:background="@drawable/ayatload2"
+    android:background="@drawable/page_back"
     android:layout_height="match_parent">
 
     <TextView
@@ -20,7 +20,7 @@
         android:textSize="15dp"
         android:textAlignment="center"
         android:text="hfuy"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
