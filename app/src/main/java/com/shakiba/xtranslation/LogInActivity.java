@@ -103,7 +103,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
         surahFragment=new SurahFragment();
 
         service = RetrofitClientInstance.getRetrofitInstance().create(GetDataService.class);
-
+        selectpageno.setText("1");
         role=getIntent().getIntExtra("mood",1);
         //2 other user
         //1 master
