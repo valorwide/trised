@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation.Retrofit;
+package com.valorwide.trised.Retrofit;
 
 import java.util.List;
 

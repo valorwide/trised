@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation;
+package com.valorwide.trised;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.valorwide.xtranslation.Retrofit.GetDataService;
-import com.valorwide.xtranslation.Retrofit.RetrofitClientInstance;
-import com.valorwide.xtranslation.Retrofit.SurahModel;
+import com.valorwide.trised.Retrofit.GetDataService;
+import com.valorwide.trised.Retrofit.RetrofitClientInstance;
+import com.valorwide.trised.Retrofit.SurahModel;
 
 import java.util.List;
 

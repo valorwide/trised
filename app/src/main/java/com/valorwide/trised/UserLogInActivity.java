@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation;
+package com.valorwide.trised;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-import com.valorwide.xtranslation.Retrofit.GetDataService;
-import com.valorwide.xtranslation.Retrofit.RetrofitClientInstance;
-import com.valorwide.xtranslation.Retrofit.UserLogin;
+import com.valorwide.trised.Retrofit.GetDataService;
+import com.valorwide.trised.Retrofit.RetrofitClientInstance;
+import com.valorwide.trised.Retrofit.UserLogin;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation;
+package com.valorwide.trised;
 
 import org.junit.Test;
 

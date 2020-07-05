@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation.surah;
+package com.valorwide.trised.surah;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,8 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.valorwide.xtranslation.R;
-import com.valorwide.xtranslation.base.BaseFragment;
+import com.valorwide.trised.R;
+import com.valorwide.trised.base.BaseFragment;
 
 public class SurahFragment extends BaseFragment {
     private View view;

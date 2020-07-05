@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation;
+package com.valorwide.trised;
 
 import android.content.Context;
 import android.text.Html;
@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.valorwide.xtranslation.Retrofit.SurahModel;
+import com.valorwide.trised.Retrofit.SurahModel;
 import com.util.ShowRadioDialog;
 
 import java.util.List;

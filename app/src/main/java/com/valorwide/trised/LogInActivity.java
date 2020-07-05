@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation;
+package com.valorwide.trised;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,10 +20,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.valorwide.xtranslation.Retrofit.GetDataService;
-import com.valorwide.xtranslation.Retrofit.RetrofitClientInstance;
-import com.valorwide.xtranslation.Retrofit.SurahDetailsModel;
-import com.valorwide.xtranslation.surah.SurahFragment;
+import com.valorwide.trised.Retrofit.GetDataService;
+import com.valorwide.trised.Retrofit.RetrofitClientInstance;
+import com.valorwide.trised.Retrofit.SurahDetailsModel;
+import com.valorwide.trised.surah.SurahFragment;
 import com.util.ShowAlertDialog;
 
 import java.io.BufferedReader;
@@ -367,9 +367,9 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     private void sendMsgToServer(String msg,String page)
     {
 
-      service.sendMessageForOthers(msg, page).enqueue(new Callback<com.valorwide.xtranslation.Retrofit.Response>() {
+      service.sendMessageForOthers(msg, page).enqueue(new Callback<com.valorwide.trised.Retrofit.Response>() {
           @Override
-          public void onResponse(Call<com.valorwide.xtranslation.Retrofit.Response> call, Response<com.valorwide.xtranslation.Retrofit.Response> response) {
+          public void onResponse(Call<com.valorwide.trised.Retrofit.Response> call, Response<com.valorwide.trised.Retrofit.Response> response) {
                 if(response.isSuccessful())
                 {
                     Log.d("datacheck","success:"+response.body());
@@ -380,7 +380,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
           }
 
           @Override
-          public void onFailure(Call<com.valorwide.xtranslation.Retrofit.Response> call, Throwable t) {
+          public void onFailure(Call<com.valorwide.trised.Retrofit.Response> call, Throwable t) {
               Log.d("datacheck","error:"+t.getMessage());
           }
       });

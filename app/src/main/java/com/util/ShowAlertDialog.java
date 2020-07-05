@@ -10,7 +10,7 @@ import android.widget.EditText;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.valorwide.xtranslation.R;
+import com.valorwide.trised.R;
 
 public class ShowAlertDialog  {
     private Context context;

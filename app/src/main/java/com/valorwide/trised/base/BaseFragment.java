@@ -1,4 +1,4 @@
-package com.valorwide.xtranslation.base;
+package com.valorwide.trised.base;
 
 import androidx.fragment.app.Fragment;
 

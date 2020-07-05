@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">XTranslation</string>
+    <string name="app_name">Trised</string>
     <string name="username_hint">Username</string>
     <string name="log_in">Log In</string>
     <string name="log_out">Log Out</string>
