@@ -1,16 +1,13 @@
-package com.shakiba.xtranslation;
+package com.valorwide.xtranslation;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.StrictMode;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
@@ -23,19 +20,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.shakiba.xtranslation.Retrofit.GetDataService;
-import com.shakiba.xtranslation.Retrofit.RetrofitClientInstance;
-import com.shakiba.xtranslation.Retrofit.SurahDetailsModel;
-import com.shakiba.xtranslation.surah.SurahFragment;
+import com.valorwide.xtranslation.Retrofit.GetDataService;
+import com.valorwide.xtranslation.Retrofit.RetrofitClientInstance;
+import com.valorwide.xtranslation.Retrofit.SurahDetailsModel;
+import com.valorwide.xtranslation.surah.SurahFragment;
 import com.util.ShowAlertDialog;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -372,9 +367,9 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
     private void sendMsgToServer(String msg,String page)
     {
 
-      service.sendMessageForOthers(msg, page).enqueue(new Callback<com.shakiba.xtranslation.Retrofit.Response>() {
+      service.sendMessageForOthers(msg, page).enqueue(new Callback<com.valorwide.xtranslation.Retrofit.Response>() {
           @Override
-          public void onResponse(Call<com.shakiba.xtranslation.Retrofit.Response> call, Response<com.shakiba.xtranslation.Retrofit.Response> response) {
+          public void onResponse(Call<com.valorwide.xtranslation.Retrofit.Response> call, Response<com.valorwide.xtranslation.Retrofit.Response> response) {
                 if(response.isSuccessful())
                 {
                     Log.d("datacheck","success:"+response.body());
@@ -385,7 +380,7 @@ public class LogInActivity extends AppCompatActivity implements ShowAlertDialog.
           }
 
           @Override
-          public void onFailure(Call<com.shakiba.xtranslation.Retrofit.Response> call, Throwable t) {
+          public void onFailure(Call<com.valorwide.xtranslation.Retrofit.Response> call, Throwable t) {
               Log.d("datacheck","error:"+t.getMessage());
           }
       });

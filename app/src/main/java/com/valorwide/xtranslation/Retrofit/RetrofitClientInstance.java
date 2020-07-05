@@ -1,4 +1,4 @@
-package com.shakiba.xtranslation.Retrofit;
+package com.valorwide.xtranslation.Retrofit;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

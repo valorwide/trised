@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.shakiba.xtranslation">
+    package="com.valorwide.xtranslation">
     <!-- Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserLogInActivity"></activity>
-        <activity android:name=".SplashActivity" >
+        <activity android:name="com.valorwide.xtranslation.UserLogInActivity"></activity>
+        <activity android:name="com.valorwide.xtranslation.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +21,10 @@
             </intent-filter>
 
         </activity>
-        <activity android:name=".SurahActivity">
+        <activity android:name="com.valorwide.xtranslation.SurahActivity">
 
         </activity>
-        <activity android:name=".LogInActivity"/>
+        <activity android:name="com.valorwide.xtranslation.LogInActivity"/>
     </application>
 
 </manifest>

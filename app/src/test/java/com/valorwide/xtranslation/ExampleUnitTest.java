@@ -1,4 +1,4 @@
-package com.shakiba.xtranslation;
+package com.valorwide.xtranslation;
 
 import org.junit.Test;
 

@@ -1,10 +1,7 @@
-package com.shakiba.xtranslation;
+package com.valorwide.xtranslation;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.shakiba.xtranslation.Retrofit.SurahModel;
-import com.shakiba.xtranslation.surah.SurahFragment;
-import com.util.ShowAlertDialog;
+import com.valorwide.xtranslation.Retrofit.SurahModel;
 import com.util.ShowRadioDialog;
 
 import java.util.List;

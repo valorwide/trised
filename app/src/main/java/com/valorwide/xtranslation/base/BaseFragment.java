@@ -1,4 +1,4 @@
-package com.shakiba.xtranslation.base;
+package com.valorwide.xtranslation.base;
 
 import androidx.fragment.app.Fragment;
 

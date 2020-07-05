@@ -11,7 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.shakiba.xtranslation.R;
+import com.valorwide.xtranslation.R;
 
 public class ShowRadioDialog {
     private Context context;

@@ -1,18 +1,17 @@
-package com.shakiba.xtranslation;
+package com.valorwide.xtranslation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.shakiba.xtranslation.Retrofit.GetDataService;
-import com.shakiba.xtranslation.Retrofit.RetrofitClientInstance;
-import com.shakiba.xtranslation.Retrofit.SurahModel;
+import com.valorwide.xtranslation.Retrofit.GetDataService;
+import com.valorwide.xtranslation.Retrofit.RetrofitClientInstance;
+import com.valorwide.xtranslation.Retrofit.SurahModel;
 
 import java.util.List;
 

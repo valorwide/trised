@@ -6,12 +6,11 @@ import android.os.Build;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import com.shakiba.xtranslation.R;
+import com.valorwide.xtranslation.R;
 
 public class ShowAlertDialog  {
     private Context context;

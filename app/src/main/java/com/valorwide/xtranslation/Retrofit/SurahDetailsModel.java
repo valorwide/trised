@@ -1,4 +1,4 @@
-package com.shakiba.xtranslation.Retrofit;
+package com.valorwide.xtranslation.Retrofit;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
