@@ -3,13 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:background="@color/greentransparent"
+    android:background="@color/white"
     android:layout_height="match_parent">
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select Language :"
+        android:fontFamily="@font/michroma"
         android:backgroundTint="@color/black"
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
@@ -33,7 +34,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:buttonTint="@color/black"
-            android:text="Arabic"
+            android:text="English"
+            android:fontFamily="@font/michroma"
             android:textSize="18sp"
             android:textColor="@color/black" />
 
@@ -44,6 +46,7 @@
             android:layout_weight="1"
             android:buttonTint="@color/black"
             android:text="Bangla"
+            android:fontFamily="@font/michroma"
             android:textSize="18sp"
             android:textColor="@color/black" />
     </RadioGroup>
@@ -56,6 +59,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         android:text="OK"
+        android:fontFamily="@font/michroma"
         android:textAllCaps="false"
         android:background="@drawable/button_shape"
         android:textSize="18sp"/>
@@ -67,6 +71,7 @@
         android:layout_marginLeft="20dp"
         android:textSize="18sp"
         android:textAllCaps="false"
+        android:fontFamily="@font/michroma"
         android:background="@drawable/button_shape"
         app:layout_constraintTop_toBottomOf="@+id/radio_group"
         app:layout_constraintLeft_toRightOf="@id/ok"

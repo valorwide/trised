@@ -13,6 +13,7 @@
         android:layout_marginTop="200dp"
         android:hint="@string/username_hint"
         android:text="Shakiba"
+        android:fontFamily="@font/michroma"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,7 +22,8 @@
         android:id="@+id/adresstext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Adress"
+        android:hint="Address"
+        android:fontFamily="@font/michroma"
         android:text="192.168.0.104"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
@@ -33,6 +35,7 @@
         android:layout_height="wrap_content"
         android:hint="Port"
         android:text="2222"
+        android:fontFamily="@font/michroma"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
         app:layout_constraintTop_toBottomOf="@id/adresstext" />
@@ -45,6 +48,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/log_in"
+        android:fontFamily="@font/michroma"
         app:layout_constraintEnd_toStartOf="@id/logout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/porttext" />
@@ -57,6 +61,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/log_out"
+        android:fontFamily="@font/michroma"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/login"
         app:layout_constraintTop_toBottomOf="@+id/porttext" />

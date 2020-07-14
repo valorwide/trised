@@ -16,10 +16,10 @@
         android:layout_marginEnd="12dp"
         android:layout_marginBottom="8dp"
         android:padding="4dp"
-
+        android:fontFamily="@font/michroma"
         android:textSize="15dp"
         android:textAlignment="center"
-        android:text="hfuy"
+        android:text="text"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
