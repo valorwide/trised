@@ -44,3 +44,9 @@ Trised uses a number of open source projects to work properly:
 * [Twitter](https://twitter.com/Trised2)
 * [Linkedin]( https://www.linkedin.com/company/trised/?viewAsMember=true )
 * [Youtube]( https://youtu.be/r0_325LajS4 )
+
+
+## Notice
+
+Trised
+Copyright [2019-2020] Valorwide Ltd.
