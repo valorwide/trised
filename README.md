@@ -37,3 +37,5 @@ Trised uses a number of open source projects to work properly:
 
 ### Social Media
 * [Facebook](https://www.facebook.com/trised1)
+* [Twitter](https://twitter.com/Trised2)
+* [Linkedin]( https://www.linkedin.com/company/trised/?viewAsMember=true )
