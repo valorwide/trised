@@ -17,6 +17,7 @@ which is toggled between the main client and sub-clients.
 Trised uses a number of open source projects to work properly:
 * [Android Studio](https://en.wikipedia.org/wiki/Android_Studio) - IDE for android development
 *  [Blockchain](https://www.blockchain.com/) 
+* Mesh network
 
 ### Screenshots
 ![](/screen1.JPG)
