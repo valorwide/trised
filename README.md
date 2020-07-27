@@ -18,7 +18,7 @@ Trised uses a number of open source projects to work properly:
 * [Android Studio](https://en.wikipedia.org/wiki/Android_Studio) - IDE for android development
 *  [Blockchain](https://www.blockchain.com/) 
 
-### Screenshots
+### User Interface (UI)
 
 ![](/screen1.JPG)
 ![](/screen2.JPG)
