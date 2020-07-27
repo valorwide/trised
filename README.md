@@ -32,13 +32,10 @@ Trised uses a number of open source projects to work properly:
 
 
 ### Screenshots
-![]https://github.com/valorwide/trised/blob/development/screen1.jpg
-
-![]https://github.com/valorwide/trised/blob/development/screen2.jpg
-
-![]https://github.com/valorwide/trised/blob/development/screen3.jpg
-
-![]https://github.com/valorwide/trised/blob/development/screen3k.jpg
+![](https://github.com/valorwide/trised/blob/development/screen1.jpg)
+![](https://github.com/valorwide/trised/blob/development/screen2.jpg)
+![](https://github.com/valorwide/trised/blob/development/screen3.jpg)
+![](https://github.com/valorwide/trised/blob/development/screen3k.jpg)
 
 
 
