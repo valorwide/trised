@@ -39,3 +39,4 @@ Trised uses a number of open source projects to work properly:
 * [Facebook](https://www.facebook.com/trised1)
 * [Twitter](https://twitter.com/Trised2)
 * [Linkedin]( https://www.linkedin.com/company/trised/?viewAsMember=true )
+* [Youtube]( https://youtu.be/r0_325LajS4 )
