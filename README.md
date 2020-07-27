@@ -17,7 +17,8 @@ Trised also provides the ability to fill up the gap of internet connection while
 This system will work flowing map: The available user will get a list of the connected users. They can communicate with each and other without any internet.  For long-distance, our TS system will create the protocol for connecting all networks. Suppose have 3 mesh network in 3 deference locations. Every mesh network has one person’s minimum internet. Suppose a person from mesh network A  to calling to a person of mesh network B.  If the person wants to distribute the broadcast in all A mesh network person for the live broadcast. All members can watch the same video at a time with a single internet cost. So a single internet cost all are connected at the same time.  Main components: Android phone and android TV.
 Main User: School Teachers, would-be students, parents, the education sector, and health care center. 
 An ETC-based crypto-economic model incentivizes users for subscription fees. Inherent network trust and digital tokens help to the subscriber. 
-
+####Connectivity map
+![](https://github.com/valorwide/trised/blob/development/connectivity%20path.jpg)
 ## Work progress (prototype)
 Initial prototyping working for text message translation and minimum connectivity creates.  Also, play the role of the bridge of internet connectivity. We are doing RnD for a large amount of mesh connectivity and long add long-distance connectivity. We have a target if users don’t have the internet the user can communicate with long-distance users. We are analyzing the mobile operators’ network policy.  It’s the required time but we got positive feedback from the mobile operator. We hope our mission will be a success. Users will get the opportunity to use all Trised features without paying any money by using the mobile operator’s network.
 
