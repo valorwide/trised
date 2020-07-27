@@ -50,3 +50,4 @@ Trised uses a number of open source projects to work properly:
 
 Trised
 Copyright [2019-2020] Valorwide Ltd.
+This product includes software developed at [Valorwide Ltd.](https://www.valorwide.com) 
