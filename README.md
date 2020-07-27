@@ -20,6 +20,8 @@ An ETC-based crypto-economic model incentivizes users for subscription fees. Inh
 
 ## Work progress (prototype)
 Initial prototyping working for text message translation and minimum connectivity creates.  Also, play the role of the bridge of internet connectivity. We are doing RnD for a large amount of mesh connectivity and long add long-distance connectivity. We have a target if users don’t have the internet the user can communicate with long-distance users. We are analyzing the mobile operators’ network policy.  It’s the required time but we got positive feedback from the mobile operator. We hope our mission will be a success. Users will get the opportunity to use all Trised features without paying any money by using the mobile operator’s network.
+
+Our target and progrese: * [Youtube]( https://youtu.be/r0_325LajS4 )
   
 ### Tech
 
