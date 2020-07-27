@@ -6,7 +6,8 @@ which is toggled between the main client and sub-clients.
  
 # Features!
 
-  - P2P connection will be established.
+  - Mesh connection will be established.
+  - Create a bridge of connectivity ( Unconnected school to be connected0
   - Admin will have the previledge to select multiple languages.
   - As the admin broadcasts the text, audio or video, other users will be able to see the data.
   - Multiple translation data can be sent to multiple users in real time.
