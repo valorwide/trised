@@ -32,8 +32,10 @@ Trised uses a number of open source projects to work properly:
 
 
 ### Screenshots
-
-
+![](/screen1.JPG)
+![](/screen2.JPG)
+![](/screen3.JPG)
+![](/screen3k.JPG)
 
 
 
