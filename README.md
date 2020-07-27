@@ -19,7 +19,6 @@ Trised uses a number of open source projects to work properly:
 *  [Blockchain](https://www.blockchain.com/) 
 
 ### Screenshots
-
 ![](/screen1.JPG)
 ![](/screen2.JPG)
 ![](/screen3.JPG)
